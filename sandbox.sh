@@ -1,4 +1,6 @@
-#!/bin/bash  
+#!/bin/bash
+echo "Optimizing production database tables..."
+sudo mysqlcheck -o moodle_prod
 echo "Refreshing code..."  
 sudo rsync -avv --progress --exclude=/config.php /mnt/code/www/moodle_prod/ /mnt/code/www/moodle_sand
 echo "Refreshing data..."  
