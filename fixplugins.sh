@@ -21,7 +21,4 @@ while read line; do
 cd $line && cd ..
 # Checkout branch specified by user.
 git fetch origin && git checkout -b $gitbranch origin/$gitbranch
-git checkout $gitbranch
 done < $filename
-
-rm $filename
