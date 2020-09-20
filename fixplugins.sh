@@ -23,3 +23,5 @@ cd $line && cd ..
 git fetch origin && git checkout -b $gitbranch origin/$gitbranch
 git checkout $gitbranch
 done < $filename
+
+rm $filename
