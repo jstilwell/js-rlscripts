@@ -6,9 +6,6 @@
 # DIRECTIONS: Run as root from a RL Backtrack VM spun up from a snapshot of the production site
 #             that you are creating a LP LMS sandbox for.
 #
-#             Once data sync is complete:
-#             ssh -A -oStrictHostKeyChecking=no jessestilwell@50.112.68.203
-#             ssh -A -oStrictHostKeyChecking=no 10.0.1.142
 
 # Get variable information from user to use later
 read -p "Enter RL Client Name (for LP directory name): " CLIENT_NAME
