@@ -11,7 +11,7 @@
 # Get variable information from user to use later
 read -p "Enter RL Client Name (for LP directory name): " CLIENT_NAME
 read -p "Enter AWS S3 Key: " AWS_S3_KEY
-read -p "Enter AWS S3 Secret: " AWS_S3_SECRET
+read -s -p "Enter AWS S3 Secret: " AWS_S3_SECRET
 
 # Install pv for mysqldump progress
 yum install pv -y
