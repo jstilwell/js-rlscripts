@@ -29,7 +29,7 @@ rm /mnt/db/mysql/ib_logfile0
 rm /mnt/db/mysql/ib_logfile1
 
 # Copy LMS code from snapshot
-rsync -avv /snapshot/db/mysql/ /mnt/db/mysql
+rsync -avv /snapshot/code/www/moodle_prod/ /mnt/code/www/moodle_prod
 
 # Copy LMS data from snapshot
 rsync -avv /snapshot/data/moodledata_prod/ /mnt/data/moodledata_prod
