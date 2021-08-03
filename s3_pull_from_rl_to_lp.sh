@@ -14,7 +14,7 @@ fi
 
 # Get variable information from user to use later
 read -p "Enter RL Client Name (for LP directory name): " CLIENT_NAME
-read -s -p "Enter Database Password (INPUT HIDDEN): " DB_PASSWORD
+read -p "Enter Database Password (INPUT HIDDEN): " DB_PASSWORD
 
 # Sync data from migration S3 bucket to LP Sandbox Web Server
 cd /wwwsandboxusa/t2sites/uat-${CLIENT_NAME}12.sandbox.learningpool.com
