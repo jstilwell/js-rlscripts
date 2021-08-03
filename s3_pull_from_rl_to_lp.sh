@@ -50,4 +50,4 @@ php /t2_codebase/admin/cli/purge_wrap.php uat-${CLIENT_NAME}12.sandbox.learningp
 # Print Dashboard String
 printf "\nOLD DASHBOARD SECRET STRING: \n$DASHBOARD_STRING\n\n"
 
-printf `mysql -h totara-sandbox-usa.cbi8awzlbvzi.us-west-2.rds.amazonaws.com -u root -p${DB_PASSWORD} moodle_ta_uat_${CLIENT_NAME}12_sandbox -e \"UPDATE mdl_config_plugins SET value = '$DASHBOARD_STRING' WHERE plugin = 'auth_dashboard' AND name = 'secret_string';\"`
+printf `\n\nmysql -h totara-sandbox-usa.cbi8awzlbvzi.us-west-2.rds.amazonaws.com -u root -p${DB_PASSWORD} moodle_ta_uat_${CLIENT_NAME}12_sandbox -e \"UPDATE mdl_config_plugins SET value = '$DASHBOARD_STRING' WHERE plugin = 'auth_dashboard' AND name = 'secret_string'\;\"`
