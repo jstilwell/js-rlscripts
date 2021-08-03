@@ -30,6 +30,9 @@ chown -R www-data:www-data sitedata_new
 chmod -R u+rwX,go+rX-w sitedata_new
 mv sitedata sitedata_old && mv sitedata_new sitedata
 
+# Get dashboard string prior to drop
+DASHBOARD_STRING=`mysql -h totara-sandbox-usa.cbi8awzlbvzi.us-west-2.rds.amazonaws.com -u root -p${DB_PASSWORD} moodle_ta_uat_${CLIENT_NAME}12_sandbox -e "SELECT value FROM mdl_config_plugins WHERE plugin = 'auth_dashboard'AND name = 'secret_string';"`
+
 # Prep DB for import
 mysql -h totara-sandbox-usa.cbi8awzlbvzi.us-west-2.rds.amazonaws.com -u root -p${DB_PASSWORD} -e "DROP DATABASE moodle_ta_uat_${CLIENT_NAME}12_sandbox; CREATE DATABASE moodle_ta_uat_${CLIENT_NAME}12_sandbox DEFAULT CHARSET=utf8;"
 
@@ -43,3 +46,8 @@ pv ./moodle.sql | mysql -h totara-sandbox-usa.cbi8awzlbvzi.us-west-2.rds.amazona
 # Run the upgrade script
 php /t12_codebase/admin/cli/upgrade_wrap.php uat-${CLIENT_NAME}12.sandbox.learningpool.com
 php /t2_codebase/admin/cli/purge_wrap.php uat-${CLIENT_NAME}12.sandbox.learningpool.com
+
+# Print Dashboard String
+printf "\nOLD DASHBOARD SECRET STRING: \n$DASHBOARD_STRING\n\n"
+
+printf `mysql -h totara-sandbox-usa.cbi8awzlbvzi.us-west-2.rds.amazonaws.com -u root -p${DB_PASSWORD} moodle_ta_uat_${CLIENT_NAME}12_sandbox -e \"UPDATE mdl_config_plugins SET value = '$DASHBOARD_STRING' WHERE plugin = 'auth_dashboard' AND name = 'secret_string';\"`
