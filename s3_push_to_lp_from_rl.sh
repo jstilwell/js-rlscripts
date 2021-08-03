@@ -34,7 +34,7 @@ mysqldump moodle_prod | pv > /mnt/data/moodle.sql
 # Sync RL Moodle Data to LP Sandbox S3 Bucket
 # Exclude: cache, sessions, cronlogs, trashdir, .tar.gz files (db backups)
 cd /mnt/data
-aws s3 sync ./moodledata_prod s3://lp-rl-migration/$CLIENT_NAME/moodledata --exclude "*cache/*" --exclude "*sessions/*" --exclude "*cronlogs/*" --exclude "*.tar.gz" --exclude "*trashdir/*"
+aws s3 sync ./moodledata_prod s3://lp-rl-migration/$CLIENT_NAME/moodledata --exclude "*envcode/*" --exclude "*cache/*" --exclude "*sessions/*" --exclude "*cronlogs/*" --exclude "*.tar.gz" --exclude "*trashdir/*"
 
 # Copy Database Dump to LP Sandbox S3 Bucket
 cd /mnt/data
