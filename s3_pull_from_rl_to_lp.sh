@@ -14,7 +14,8 @@ fi
 
 # Get variable information from user to use later
 read -p "Enter RL Client Name (for LP directory name): " CLIENT_NAME
-read -p "Enter Database Password (INPUT HIDDEN): " DB_PASSWORD
+read -p "Enter Database Password: " DB_PASSWORD
+read -p "Enter Code Branch: [LMS-6897-integrate-totara-12.30] " -i "LMS-6897-integrate-totara-12.30" CODE_BRANCH
 
 # Sync data from migration S3 bucket to LP Sandbox Web Server
 cd /wwwsandboxusa/t2sites/uat-${CLIENT_NAME}12.sandbox.learningpool.com
@@ -44,8 +45,8 @@ aws s3 cp s3://lp-rl-migration/${CLIENT_NAME}/moodle.sql ./
 pv ./moodle.sql | mysql -h totara-sandbox-usa.cbi8awzlbvzi.us-west-2.rds.amazonaws.com -u root -p${DB_PASSWORD} moodle_ta_uat_${CLIENT_NAME}12_sandbox
 
 # Run the upgrade script
-php /t12_codebase/admin/cli/upgrade_wrap.php uat-${CLIENT_NAME}12.sandbox.learningpool.com
-php /t2_codebase/admin/cli/purge_wrap.php uat-${CLIENT_NAME}12.sandbox.learningpool.com
+php /wwwsandboxusa//${CODE_BRANCH}/admin/cli/upgrade_wrap.php uat-${CLIENT_NAME}12.sandbox.learningpool.com
+php /wwwsandboxusa//${CODE_BRANCH}/admin/cli/purge_wrap.php uat-${CLIENT_NAME}12.sandbox.learningpool.com
 
 # Print Dashboard String
 printf "\nOLD DASHBOARD SECRET STRING: \n$DASHBOARD_STRING\n\n"
