@@ -32,7 +32,7 @@ chmod -R u+rwX,go+rX-w sitedata_new
 mv sitedata sitedata_old && mv sitedata_new sitedata
 
 # Get dashboard string prior to drop
-DASHBOARD_STRING=`mysql mysql -s -N -h totara-sandbox-usa.cbi8awzlbvzi.us-west-2.rds.amazonaws.com -u root -p${DB_PASSWORD} moodle_ta_uat_${CLIENT_NAME}12_sandbox -e "SELECT value FROM mdl_config_plugins WHERE plugin = 'auth_dashboard' AND name = 'secret_string';"`
+DASHBOARD_STRING=`mysql -s -N -h totara-sandbox-usa.cbi8awzlbvzi.us-west-2.rds.amazonaws.com -u root -p${DB_PASSWORD} moodle_ta_uat_${CLIENT_NAME}12_sandbox -e "SELECT value FROM mdl_config_plugins WHERE plugin = 'auth_dashboard' AND name = 'secret_string';"`
 
 # Prep DB for import
 mysql -h totara-sandbox-usa.cbi8awzlbvzi.us-west-2.rds.amazonaws.com -u root -p${DB_PASSWORD} -e "DROP DATABASE moodle_ta_uat_${CLIENT_NAME}12_sandbox; CREATE DATABASE moodle_ta_uat_${CLIENT_NAME}12_sandbox DEFAULT CHARSET=utf8;"
