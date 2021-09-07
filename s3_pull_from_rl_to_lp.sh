@@ -48,6 +48,9 @@ pv ./moodle.sql | mysql -h totara-sandbox-usa.cbi8awzlbvzi.us-west-2.rds.amazona
 php /wwwsandboxusa//${CODE_BRANCH:-LMS-6897-integrate-totara-12.30}/admin/cli/upgrade_wrap.php uat-${CLIENT_NAME}12.sandbox.learningpool.com
 php /wwwsandboxusa//${CODE_BRANCH:-LMS-6897-integrate-totara-12.30}/admin/cli/purge_wrap.php uat-${CLIENT_NAME}12.sandbox.learningpool.com
 
+# Create symlink to correct code branch
+ln -snf /wwwsandboxusa//${CODE_BRANCH:-LMS-6897-integrate-totara-12.30}/wwwsandboxusa/t2sites/uat-${CLIENT_NAME}12.sandbox.learningpool.com/wwwroot
+
 # Print Dashboard String
 printf "\nOLD DASHBOARD SECRET STRING: \n$DASHBOARD_STRING\n\n"
 
