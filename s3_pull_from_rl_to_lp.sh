@@ -49,7 +49,7 @@ php /wwwsandboxusa//${CODE_BRANCH:-LMS-6897-integrate-totara-12.30}/admin/cli/up
 php /wwwsandboxusa//${CODE_BRANCH:-LMS-6897-integrate-totara-12.30}/admin/cli/purge_wrap.php uat-${CLIENT_NAME}12.sandbox.learningpool.com
 
 # Create symlink to correct code branch
-printf "\n LINK WWWROOT TO CODE BASE: ln -snf /wwwsandboxusa//${CODE_BRANCH:-LMS-6897-integrate-totara-12.30}/wwwsandboxusa/t2sites/uat-${CLIENT_NAME}12.sandbox.learningpool.com/wwwroot\n\n"
+printf "\n LINK WWWROOT TO CODE BASE: ln -snf /wwwsandboxusa//${CODE_BRANCH:-LMS-6897-integrate-totara-12.30} /wwwsandboxusa/t2sites/uat-${CLIENT_NAME}12.sandbox.learningpool.com/wwwroot\n\n"
 
 # Print Dashboard String
 printf "\nOLD DASHBOARD SECRET STRING: \n$DASHBOARD_STRING\n\n"
